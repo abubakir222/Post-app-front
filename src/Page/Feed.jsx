@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Spinner } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
 import io from 'socket.io-client';
-import AppNavbar from '../Components/Navbar';
 import PostHomeCard from '../Components/PostHomeCard';
 import CommentModal from './CommentModal';
 import './styles.css';
@@ -290,7 +289,6 @@ const Feed = () => {
 
   return (
     <>
-      <AppNavbar />
       <div className="container mt-5">
         {error && <div className="alert alert-danger">{error}</div>}
         <div className="post-grid">

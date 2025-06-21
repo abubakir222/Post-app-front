@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { register, login } from '../api/authRequest';
+import './AuthForm.css';
 
 const AuthForm = () => {
   const [isSignup, setIsSignup] = useState(false);
@@ -24,31 +25,29 @@ const AuthForm = () => {
     setError('');
 
     try {
-      console.log('ok');
-      
-      const response = isSignup
-        ? await register(formData)
-        : await login(formData);
-
-      console.log(response);
+      let response;
+      if (isSignup) {
+        response = await register(formData);
+      } else {
+        response = await login(formData);
+      }
       const data = response.data;
-      
 
       if (data && data.token && data.userId && data.user && typeof data.user.role !== 'undefined') {
         localStorage.setItem('token', data.token);
         localStorage.setItem('userId', data.userId.toString());
-        localStorage.setItem('role', data.user.role.toString()); // <-- ROLE ni ham saqlab qo‘yamiz
+        localStorage.setItem('role', data.user.role.toString());
 
         toast.success(isSignup ? 'Signup Success' : 'Login Success', {
           position: "top-right",
-          autoClose: 10000,
+          autoClose: 2000,
         });
         navigate('/home', { replace: true });
       } else {
         setError(data?.message || 'Serverdan noto‘g‘ri javob keldi');
         toast.error(isSignup ? 'Signup Denied' : 'Login Denied', {
           position: "top-right",
-          autoClose: 10000,
+          autoClose: 2000,
         });
       }
     } catch (error) {
@@ -57,7 +56,7 @@ const AuthForm = () => {
       setError(error.response?.data?.message || error.message || 'Server bilan ulanishda xatolik');
       toast.error(isSignup ? 'Signup Denied' : 'Login Denied', {
         position: "top-right",
-        autoClose: 10000,
+        autoClose: 2000,
       });
     }
   };
@@ -71,96 +70,72 @@ const AuthForm = () => {
   }, [navigate]);
 
   return (
-    <div className="auth-container" style={{ display: 'flex', justifyContent: 'center', marginTop: '100px' }}>
-      <form onSubmit={handleSubmit} style={{
-        background: 'linear-gradient(to top, #f43f5e, #ec4899)',
-        padding: '30px',
-        borderRadius: '15px',
-        width: '300px',
-        textAlign: 'center',
-        color: '#fff'
-      }}>
-        <h3>{isSignup ? 'Signup' : 'Login'}</h3>
+    <div className="auth-bg">
+      <div className="auth-container">
+        <form onSubmit={handleSubmit} className="auth-form">
+          <h2 className="auth-title">{isSignup ? 'Signup' : 'Login'}</h2>
 
-        {error && <p style={{ color: '#ff0000', marginBottom: '10px' }}>{error}</p>}
+          {error && <p className="auth-error">{error}</p>}
 
-        {isSignup && (
-          <>
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              onChange={handleChange}
-              required
-              style={inputStyle}
-              autoComplete="username"
-            />
-            <input
-              type="text"
-              name="surname"
-              placeholder="Surname"
-              onChange={handleChange}
-              required
-              style={inputStyle}
-              autoComplete="family-name"
-            />
-          </>
-        )}
+          {isSignup && (
+            <>
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                onChange={handleChange}
+                required
+                className="auth-input"
+                autoComplete="username"
+              />
+              <input
+                type="text"
+                name="surname"
+                placeholder="Surname"
+                onChange={handleChange}
+                required
+                className="auth-input"
+                autoComplete="family-name"
+              />
+            </>
+          )}
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter your email"
-          onChange={handleChange}
-          required
-          style={inputStyle}
-          autoComplete="email"
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter your password"
-          onChange={handleChange}
-          required
-          style={inputStyle}
-          autoComplete={isSignup ? "new-password" : "current-password"}
-        />
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            onChange={handleChange}
+            required
+            className="auth-input"
+            autoComplete="email"
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            onChange={handleChange}
+            required
+            className="auth-input"
+            autoComplete={isSignup ? "new-password" : "current-password"}
+          />
 
-        <button type="submit" style={buttonStyle}>
-          {isSignup ? 'Signup' : 'Login'}
-        </button>
+          <button type="submit" className="auth-btn">
+            {isSignup ? 'Signup' : 'Login'}
+          </button>
 
-        <p style={{ marginTop: '10px', color: '#fff' }}>
-          {isSignup ? 'Already have an account?' : "Don't have an account?"}{' '}
-          <span
-            onClick={() => setIsSignup(!isSignup)}
-            style={{ color: '#000', textDecoration: 'underline', cursor: 'pointer' }}
-          >
-            {isSignup ? 'Login' : 'Signup'}
-          </span>
-        </p>
-      </form>
+          <p className="auth-switch-text">
+            {isSignup ? 'Already have an account?' : "Don't have an account?"}{' '}
+            <span
+              className="auth-switch-link"
+              onClick={() => setIsSignup(!isSignup)}
+            >
+              {isSignup ? 'Login' : 'Signup'}
+            </span>
+          </p>
+        </form>
+      </div>
     </div>
   );
-};
-
-const inputStyle = {
-  margin: '10px 0',
-  padding: '10px',
-  width: '100%',
-  borderRadius: '5px',
-  border: 'none'
-};
-
-const buttonStyle = {
-  padding: '10px 20px',
-  background: 'linear-gradient(to right, #0ea5e9, #3b82f6)',
-  color: '#fff',
-  border: 'none',
-  borderRadius: '5px',
-  marginTop: '10px',
-  cursor: 'pointer',
-  width: '100%'
 };
 
 export default AuthForm;

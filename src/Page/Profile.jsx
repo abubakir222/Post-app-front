@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './Profile.css';
-import AppNavbar from '../Components/Navbar';
 
 const API_URL = 'https://post-app-backend-sprx.onrender.com/api';
 
@@ -349,7 +348,6 @@ const ProfilePage = () => {
 
   return (
     <>
-      <AppNavbar />
       <div className="profile-page-ig">
         <div className="profile-ig-header">
           <div style={{ position: 'relative' }}>

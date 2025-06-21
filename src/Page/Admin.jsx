@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from '../api/instance';
-import AppNavbar from '../Components/Navbar';
 import { useNavigate, Link } from 'react-router-dom';
 import Loader from '../Components/Loader';
 import './Admin.css';
@@ -234,7 +233,6 @@ const AdminPage = () => {
 
   return (
     <div className="admin-container">
-      <AppNavbar />
       <div className="admin-section-wrap mt-5">
         <div className="admin-section-card" onClick={() => openStatModal('post')}>
           <div>Postlar</div>

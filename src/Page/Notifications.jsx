@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NotificationModal from './ModalNotification';
 import { NotificationContext } from './NotificationContex';
-import AppNavbar from '../Components/Navbar';
 import {
   getNotifications,
   readNotification,
@@ -117,7 +116,6 @@ const Notifications = () => {
 
   return (
     <>
-      <AppNavbar />
       <div className="notif-container">
         <div className="notif-box">
           {notifications.length === 0 ? (

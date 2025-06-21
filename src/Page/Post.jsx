@@ -7,7 +7,6 @@ import {
 } from 'reactstrap';
 import { FaEdit, FaTrash, FaCheck, FaTimes, FaPaperPlane } from 'react-icons/fa';
 import io from 'socket.io-client';
-import AppNavbar from '../Components/Navbar';
 import PostCard from '../Components/PostCard';
 import './styles.css';
 
@@ -388,7 +387,6 @@ const Post = () => {
 
   return (
     <>
-      <AppNavbar />
       <div className="text-center mt-5">
         {error && <div className="alert alert-danger">{error}</div>}
         <Button color="primary" onClick={toggleModal}>

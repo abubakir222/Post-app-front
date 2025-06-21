@@ -1,0 +1,102 @@
+.auth-bg {
+  min-height: 100vh;
+  background: url("https://static.vecteezy.com/system/resources/thumbnails/011/635/825/small_2x/abstract-square-interface-modern-background-concept-fingerprint-digital-scanning-visual-security-system-authentication-login-vector.jpg");
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-container {
+  background: rgba(255,255,255,0.05);
+  background: #ffffff00;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+  border-radius: 20px;
+  padding: 40px 30px;
+  width: 350px;
+  backdrop-filter: blur(7px);
+  border: 1.5px solid rgba(255,255,255,0.22);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.auth-error {
+  background: #f87171;
+  color: #fff;
+  border-radius: 5px;
+  padding: 6px 12px;
+  margin-bottom: 15px;
+  font-size: 0.98rem;
+  width: 100%;
+  text-align: center;
+}
+
+.auth-input {
+  margin: 10px 0;
+  padding: 12px 14px;
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.8);
+  color: #333;
+  font-size: 1rem;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 2px 6px rgba(236,72,153,0.07);
+}
+
+.auth-input:focus {
+  box-shadow: 0 0 0 2px #ec4899;
+}
+
+.auth-btn {
+  padding: 12px 0;
+  background: linear-gradient(90deg, #0ea5e9 0%, #3b82f6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  margin-top: 18px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.08rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 12px rgba(59,130,246,0.10);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.auth-btn:hover {
+  background: linear-gradient(90deg, #3b82f6 0%, #0ea5e9 100%);
+  box-shadow: 0 6px 18px rgba(59,130,246,0.18);
+}
+
+.auth-switch-text {
+  margin-top: 18px;
+  color: #fefefe;
+  font-size: 1rem;
+}
+
+.auth-switch-link {
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 3px;
+  transition: color 0.2s;
+}
+.auth-switch-link:hover {
+  color: #3b82f6;
+}

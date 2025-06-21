@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardBody, CardTitle, CardImg, Input, Button, Spinner } from 'reactstrap';
 import { FaUserPlus, FaUserMinus } from 'react-icons/fa';
-import AppNavbar from '../Components/Navbar';
 
 const API_URL = 'https://post-app-backend-sprx.onrender.com/api/user';
 
@@ -136,7 +135,6 @@ const UserSearch = () => {
 
   return (
     <>
-      <AppNavbar />
       <div className="container mt-5">
         <h2 className="text-center mb-4">Foydalanuvchilar</h2>
         {userLoading ? (
