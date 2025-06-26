@@ -10,7 +10,7 @@ import io from 'socket.io-client';
 import PostCard from '../Components/PostCard';
 import './styles.css';
 
-const socket = io('https://post-app-backend-sprx.onrender.com/api', {
+const socket = io('https://post-app-backend-1.onrender.com/api', {
   reconnection: true,
   reconnectionAttempts: 5,
   reconnectionDelay: 1000,
@@ -42,7 +42,7 @@ const Post = () => {
   const [commentUpdateLoading, setCommentUpdateLoading] = useState({});
 
   const navigate = useNavigate();
-  const API_URL = 'https://post-app-backend-sprx.onrender.com/api/post';
+  const API_URL = 'https://post-app-backend-1.onrender.com/api/post';
 
   // User info
   const userId = localStorage.getItem('userId');
@@ -261,7 +261,7 @@ const Post = () => {
       setCommentLoading(true);
       const token = localStorage.getItem('token');
       await axios.post(
-        'https://post-app-backend-sprx.onrender.com/api/comment',
+        'https://post-app-backend-1.onrender.com/api/comment',
         { postId: activeCommentPost._id, text: commentText },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -291,7 +291,7 @@ const Post = () => {
     try {
       setCommentDeleteLoading((prev) => ({ ...prev, [commentId]: true }));
       const token = localStorage.getItem('token');
-      await axios.delete(`https://post-app-backend-sprx.onrender.com/api/comment/${commentId}`, {
+      await axios.delete(`https://post-app-backend-1.onrender.com/api/comment/${commentId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setPosts((prevPosts) =>
@@ -337,7 +337,7 @@ const Post = () => {
       setCommentUpdateLoading((prev) => ({ ...prev, [editingCommentId]: true }));
       const token = localStorage.getItem('token');
       const response = await axios.put(
-        `https://post-app-backend-sprx.onrender.com/api/comment/${editingCommentId}`,
+        `https://post-app-backend-1.onrender.com/api/comment/${editingCommentId}`,
         { text: editingCommentText },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -29,7 +29,8 @@ const AuthForm = () => {
       if (isSignup) {
         response = await register(formData);
       } else {
-        response = await login(formData);
+        // faqat email va password yuboriladi
+        response = await login({ email: formData.email, password: formData.password });
       }
       const data = response.data;
 
@@ -51,8 +52,6 @@ const AuthForm = () => {
         });
       }
     } catch (error) {
-      console.log(error);
-      
       setError(error.response?.data?.message || error.message || 'Server bilan ulanishda xatolik');
       toast.error(isSignup ? 'Signup Denied' : 'Login Denied', {
         position: "top-right",
@@ -74,15 +73,14 @@ const AuthForm = () => {
       <div className="auth-container">
         <form onSubmit={handleSubmit} className="auth-form">
           <h2 className="auth-title">{isSignup ? 'Signup' : 'Login'}</h2>
-
           {error && <p className="auth-error">{error}</p>}
-
           {isSignup && (
             <>
               <input
                 type="text"
                 name="username"
                 placeholder="Username"
+                value={formData.username}
                 onChange={handleChange}
                 required
                 className="auth-input"
@@ -92,6 +90,7 @@ const AuthForm = () => {
                 type="text"
                 name="surname"
                 placeholder="Surname"
+                value={formData.surname}
                 onChange={handleChange}
                 required
                 className="auth-input"
@@ -99,11 +98,11 @@ const AuthForm = () => {
               />
             </>
           )}
-
           <input
             type="email"
             name="email"
             placeholder="Enter your email"
+            value={formData.email}
             onChange={handleChange}
             required
             className="auth-input"
@@ -113,16 +112,15 @@ const AuthForm = () => {
             type="password"
             name="password"
             placeholder="Enter your password"
+            value={formData.password}
             onChange={handleChange}
             required
             className="auth-input"
             autoComplete={isSignup ? "new-password" : "current-password"}
           />
-
           <button type="submit" className="auth-btn">
             {isSignup ? 'Signup' : 'Login'}
           </button>
-
           <p className="auth-switch-text">
             {isSignup ? 'Already have an account?' : "Don't have an account?"}{' '}
             <span

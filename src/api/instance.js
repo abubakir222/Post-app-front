@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create({
   // baseURL: "http://localhost:4000",
-  baseURL: "https://post-app-backend-sprx.onrender.com/api",
+  baseURL: "hhttps://post-app-backend-1.onrender.com/api",
 });
 
 instance.interceptors.request.use(config => {

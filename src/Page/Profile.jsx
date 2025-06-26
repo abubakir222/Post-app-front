@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './Profile.css';
 
-const API_URL = 'https://post-app-backend-sprx.onrender.com/api';
+const API_URL = 'https://post-app-backend-1.onrender.com/api';
 
 const ProfilePage = () => {
   const navigate = useNavigate();

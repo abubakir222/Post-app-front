@@ -2,10 +2,7 @@ import axios from 'axios';
 
 const BASE_URL = process.env.REACT_APP_SERVER_URL || 'http://localhost:4000/api';
 
-export const register = (formData) => {
-  return axios.post(`${BASE_URL}/signup`, formData);
-};
+const API = axios.create({ baseURL: BASE_URL });
 
-export const login = (formData) => {
-  return axios.post(`${BASE_URL}/login`, formData);
-};
+export const register = (formData) => API.post('/signup', formData);
+export const login = ({ email, password }) => API.post('/login', { email, password });
