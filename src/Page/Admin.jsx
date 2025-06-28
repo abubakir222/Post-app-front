@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import Loader from '../Components/Loader';
 import './Admin.css';
 
-const API = '/api/admin';
+const API = 'https://post-app-backend-wpnl.onrender.com/api/admin';
 
 const LoaderMini = () => <span className="admin-spinner-mini"></span>;
 const Modal = ({ show, onClose, title, children }) => {
@@ -125,9 +125,9 @@ const AdminPage = () => {
     setStatUserPosts([]);
     try {
       let url = "";
-      if (type === "like") url = `/api/user/${user._id}/liked-posts`;
-      if (type === "comment") url = `/api/user/${user._id}/commented-posts`;
-      if (type === "post") url = `/api/user/${user._id}/my-posts`;
+      if (type === "like") url = `https://post-app-backend-wpnl.onrender.com/api/user/${user._id}/liked-posts`;
+      if (type === "comment") url = `https://post-app-backend-wpnl.onrender.com/api/user/${user._id}/commented-posts`;
+      if (type === "post") url = `https://post-app-backend-wpnl.onrender.com/api/user/${user._id}/my-posts`;
       const res = await axios.get(url);
       setStatUserPosts(res.data);
     } catch (e) {

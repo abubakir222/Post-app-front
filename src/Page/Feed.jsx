@@ -7,8 +7,8 @@ import PostHomeCard from '../Components/PostHomeCard';
 import CommentModal from './CommentModal';
 import './styles.css';
 
-const socket = io('https://post-app-backend-1.onrender.com/api', { reconnection: true, reconnectionAttempts: 5, reconnectionDelay: 1000 });
-const API_URL = 'https://post-app-backend-1.onrender.com/api/post';
+const socket = io('https://post-app-backend-wpnl.onrender.com/api', { reconnection: true, reconnectionAttempts: 5, reconnectionDelay: 1000 });
+const API_URL = 'https://post-app-backend-wpnl.onrender.com/api/post';
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
@@ -180,7 +180,7 @@ const Feed = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        'https://post-app-backend-1.onrender.com/api/comment',
+        'https://post-app-backend-wpnl.onrender.com/api/comment',
         { postId: selectedPost._id, text: commentText },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -209,7 +209,7 @@ const Feed = () => {
     setCommentDeleteLoading((prev) => ({ ...prev, [commentId]: true }));
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`https://post-app-backend-1.onrender.com/api/comment/${commentId}`, {
+      await axios.delete(`https://post-app-backend-wpnl.onrender.com/api/comment/${commentId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -244,7 +244,7 @@ const Feed = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.put(
-        `https://post-app-backend-1.onrender.com/api/comment/${editingCommentId}`,
+        `https://post-app-backend-wpnl.onrender.com/api/comment/${editingCommentId}`,
         { text: editingCommentText },
         { headers: { Authorization: `Bearer ${token}` } }
       );

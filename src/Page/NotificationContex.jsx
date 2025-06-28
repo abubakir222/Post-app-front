@@ -14,7 +14,7 @@ export const NotificationProvider = ({ children }) => {
   useEffect(() => {
     if (!userId || !token) return;
 
-    const sock = io('https://post-app-backend-1.onrender.com/api', { transports: ['websocket'] });
+    const sock = io('https://post-app-backend-wpnl.onrender.com/api', { transports: ['websocket'] });
     setSocket(sock);
 
     sock.on('connect', () => {

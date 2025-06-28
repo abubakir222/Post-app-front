@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create({
   // baseURL: "http://localhost:4000",
-  baseURL: "hhttps://post-app-backend-1.onrender.com/api",
+  baseURL: "https://post-app-backend-wpnl.onrender.com/api",
 });
 
 instance.interceptors.request.use(config => {

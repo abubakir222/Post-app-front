@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { register, login } from '../api/authRequest';
-import './AuthForm.css';
+import "../Components/AuthForm.css";
 
 const AuthForm = () => {
   const [isSignup, setIsSignup] = useState(false);
@@ -29,8 +29,9 @@ const AuthForm = () => {
       if (isSignup) {
         response = await register(formData);
       } else {
-        // faqat email va password yuboriladi
         response = await login({ email: formData.email, password: formData.password });
+        console.log(response);
+        
       }
       const data = response.data;
 
@@ -52,6 +53,7 @@ const AuthForm = () => {
         });
       }
     } catch (error) {
+      console.log(error);
       setError(error.response?.data?.message || error.message || 'Server bilan ulanishda xatolik');
       toast.error(isSignup ? 'Signup Denied' : 'Login Denied', {
         position: "top-right",

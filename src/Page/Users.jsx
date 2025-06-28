@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card, CardBody, CardTitle, CardImg, Input, Button, Spinner } from 'reactstrap';
 import { FaUserPlus, FaUserMinus } from 'react-icons/fa';
 
-const API_URL = 'https://post-app-backend-1.onrender.com/api/user';
+const API_URL = 'https://post-app-backend-wpnl.onrender.com/api/user';
 
 const UserSearch = () => {
   const [searchQuery, setSearchQuery] = useState('');
