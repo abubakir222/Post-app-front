@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // const API_URL = 'http://localhost:4000/api';
-const API_URL = 'https://post-app-backend-wpnl.onrender.com/api';
+const API_URL = 'https://post-app-backend-8el3.onrender.com/api';
 
 export const getNotifications = async (userId, token) => {
   try {
